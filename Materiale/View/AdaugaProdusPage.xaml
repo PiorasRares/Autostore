@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Materiale.View.AdaugaProdusPage"
+             xmlns:viewModel="clr-namespace:Materiale.ViewModel"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.TabBarIsVisible="False"
+             Title="Adauga un produs nou">
+    
+    <ContentPage.BindingContext>
+        <viewModel:AdaugaProdusPageViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="410"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <!--Borderul cu Picker-->
+        <Border Grid.Row="0" Margin="-2,-2,-2,0" StrokeShape="RoundRectangle 0,0,30,30" BackgroundColor="Thistle">
+            <Picker Title="Linie" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold" Margin="0,20,0,0" HeightRequest="80" WidthRequest="150">
+                
+            </Picker>
+        </Border>
+        
+        <!--Borderul cu data entry-->
+        <Border Grid.Row="1" Margin="30,-130,30,0" StrokeShape="RoundRectangle 30,30,30,30" >
+            
+            <StackLayout Margin="30,20,20,0">
+               
+                <!--Layout pentru nume produs-->
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="clip.png" HeightRequest="25"/>
+                    <Entry Placeholder="Nume produs" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
+                    <Label Text="Top-Only" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                    <Switch/>
+                </StackLayout>
+                <BoxView HeightRequest="0.2"/>
+                
+                <!--Layout pentru pcb-->
+                <StackLayout Orientation="Horizontal" >
+                    <Image Source="pcb.png" HeightRequest="25"/>
+                    <Entry Placeholder="PCB" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
+                    <StackLayout>
+                        <Label Text="/Panel" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+                        <Border HeightRequest="25" StrokeShape="RoundRectangle 10,10,10,10">
+                            <Label Text="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </StackLayout>
+                    <Stepper WidthRequest="70" HeightRequest="40"/>
+                </StackLayout>
+                <BoxView HeightRequest="0.2"/>
+                
+                <!---->
+                
+            </StackLayout>
+            
+        </Border>
+         
+        <!-- Butonul de adauga-->
+        <Button Grid.Row="3" Margin="0,-50,0,0" WidthRequest="120" HeightRequest="40" Text="Adauga" CornerRadius="30" />
+
+    </Grid>
+</ContentPage>

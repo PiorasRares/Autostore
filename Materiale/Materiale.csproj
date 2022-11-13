@@ -48,4 +48,26 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\clip.png" />
+	  <None Remove="Resources\Images\edit.png" />
+	  <None Remove="Resources\Images\pcb.png" />
+	  <None Remove="Resources\Images\reel.png" />
+	  <None Remove="Resources\Images\truck.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="View\AdaugaProdusPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MaterialeView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

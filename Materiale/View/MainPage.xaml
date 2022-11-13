@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Materiale.ViewModel"
+             x:Class="Materiale.MainPage"
+             Title="Plan">
+    
+    <ContentPage.BindingContext>
+        <viewModel:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="-2,-2,-2,10" StrokeShape="RoundRectangle 0,0,30,30"></Border>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="20,-20,20,40" StrokeShape="RoundRectangle 0,0,30,30" >
+            <CollectionView ItemsSource="{Binding Linii}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border HeightRequest="45" Margin="5,6,5,5" StrokeShape="RoundRectangle 15,15,15,15">
+                            <Label Text="{Binding NumeLinie}" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="26"/>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </Border>
+        
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="0,-4,0,170" HorizontalOptions="Center" HeightRequest="30" WidthRequest="170" StrokeShape="RoundRectangle 0,0,30,30">
+            <Label Text="In Curs" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+        </Border>
+        
+        
+        <Button Grid.Row="0" Grid.Column="0" VerticalOptions="End" HeightRequest="39" Margin="10,0,0,0" Text="Adauga Linie" Command="{Binding AddLinie}" CornerRadius="30"/>
+        <Button Grid.Row="0" Grid.Column="1" VerticalOptions="End" HeightRequest="39" Margin="0,0,10,0" Text="Adauga Produs" Command="{Binding AddProdus}" CornerRadius="30"/>
+
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End" Margin="0,0,0,20" HorizontalOptions="Center" HeightRequest="30" WidthRequest="150" StrokeShape="RoundRectangle 30,30,30,30">
+            <Label Text="Selecteaza Plan" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+        </Border>
+        
+    </Grid>
+    
+    
+</ContentPage>
