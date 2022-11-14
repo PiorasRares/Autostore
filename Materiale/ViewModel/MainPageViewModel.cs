@@ -16,6 +16,7 @@ namespace Materiale.ViewModel
         public List<Linie> Linii { get; set; }
         public ICommand AddLinie { get; private set; }
         public ICommand AddProdus { get; private set; }
+        public ICommand AdaugainPlan { get;private set; }
         public MainPageViewModel()
         {
             Linii = App.database.GetLinii().Result;

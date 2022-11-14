@@ -9,9 +9,10 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 	}
-    private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         App.LinieSelectata = e.CurrentSelection[0] as Linie;
+        await Shell.Current.GoToAsync(nameof(ProduseView));
     }
 }
 

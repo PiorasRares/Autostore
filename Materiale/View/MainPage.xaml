@@ -22,7 +22,7 @@
 
         <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="-2,-2,-2,10" StrokeShape="RoundRectangle 0,0,30,30"></Border>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="20,-20,20,40" StrokeShape="RoundRectangle 0,0,30,30" >
-            <CollectionView ItemsSource="{Binding Linii}" SelectionMode="Single">
+            <CollectionView ItemsSource="{Binding Linii}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border HeightRequest="45" Margin="5,6,5,5" StrokeShape="RoundRectangle 15,15,15,15">

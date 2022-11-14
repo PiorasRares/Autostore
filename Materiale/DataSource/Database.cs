@@ -29,14 +29,15 @@ namespace Materiale.DataSource
         {
             return database.Table<Produs>().Where(i=>i.IdLinie== IdLinie).ToListAsync();
         }
+        public Task<int> UltimulProdusAdaugat()
+        {
+            return database.ExecuteScalarAsync<int>("SELECT last_insert_rowid()");
+        }
         public Task<int> AddProdus(Produs produs)
         {
             return database.InsertAsync(produs);
         }
-        public Task<int> DeleteProdus(int Id)
-        {
-            return database.DeleteAsync(Id);
-        }
+
         //CRUD Rola
         public Task<List<Rola>> GetRole(int IdProdus)
         {
@@ -45,6 +46,14 @@ namespace Materiale.DataSource
         public Task<int> AddRola(Rola rola)
         {
             return database.InsertAsync(rola);
+        }
+        public Task<Rola> GetLastRola(int id)
+        {
+            return database.Table<Rola>().Where(i => i.Id == id).FirstAsync();
+        }
+        public Task<int> DeleteRola(Rola rola)
+        {
+            return database.DeleteAsync(rola);
         }
     }
 }

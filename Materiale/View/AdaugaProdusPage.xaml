@@ -21,7 +21,7 @@
         
         <!--Borderul cu Picker-->
         <Border Grid.Row="0" Margin="-2,-2,-2,0" StrokeShape="RoundRectangle 0,0,30,30" BackgroundColor="Thistle">
-            <Picker Title="Linie" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold" Margin="0,20,0,0" HeightRequest="80" WidthRequest="150">
+            <Picker ItemDisplayBinding="{Binding NumeLinie}" ItemsSource="{Binding Linii}"  SelectedItem="{Binding SelectedPicker}"  Title="Linii" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold" Margin="0,20,0,0" HeightRequest="80" WidthRequest="150">
                 
             </Picker>
         </Border>
@@ -34,34 +34,118 @@
                 <!--Layout pentru nume produs-->
                 <StackLayout Orientation="Horizontal">
                     <Image Source="clip.png" HeightRequest="25"/>
-                    <Entry Placeholder="Nume produs" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
+                    <Entry Text="{Binding NumeProdus}" Placeholder="Nume produs" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
                     <Label Text="Top-Only" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                    <Switch/>
+                    <Switch IsToggled="{Binding TopOnly}" />
                 </StackLayout>
                 <BoxView HeightRequest="0.2"/>
-                
+
+                <!--Layout pentru nume top-->
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding TopVisible}">
+                    <Image Source="pcb.png" HeightRequest="25"/>
+                    <Entry Text="{Binding NumeTop}" Placeholder="Nume Top" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
+                </StackLayout>
+                <BoxView HeightRequest="0.2" IsVisible="{Binding TopVisible}" />
+
                 <!--Layout pentru pcb-->
                 <StackLayout Orientation="Horizontal" >
                     <Image Source="pcb.png" HeightRequest="25"/>
-                    <Entry Placeholder="PCB" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
+                    <Entry Text="{Binding NumePCB}" Placeholder="PCB" WidthRequest="100" Margin="10,0,0,0" VerticalOptions="Center"/>
                     <StackLayout>
                         <Label Text="/Panel" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                         <Border HeightRequest="25" StrokeShape="RoundRectangle 10,10,10,10">
-                            <Label Text="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="{Binding PCBpePanel}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Border>
                     </StackLayout>
-                    <Stepper WidthRequest="70" HeightRequest="40"/>
+                    <Stepper Value="{Binding PCBpePanel}" WidthRequest="70" HeightRequest="40"/>
                 </StackLayout>
                 <BoxView HeightRequest="0.2"/>
                 
-                <!---->
                 
+                <!--Layout Confirmare-->
+                <StackLayout Orientation="Horizontal" HeightRequest="50">
+
+                    <Border IsVisible="{Binding Confirm}" BackgroundColor="Lime" WidthRequest="100" HeightRequest="35" Margin="70,0,0,0" StrokeShape="RoundRectangle 20,20,20,20">
+                        <Label Text="Confirmat!" TextColor="DarkCyan" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+
+                    <ImageButton Command="{Binding Check}" IsVisible="{Binding Buttoncheck}" Source="check.png" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" WidthRequest="50" HeightRequest="35"/>
+
+                </StackLayout>
+                <BoxView HeightRequest="0.2"/>
+                
+                <!--Layout Role-->
+                <StackLayout IsVisible="{Binding Confirm}">
+                    <!--Header-->
+                    <StackLayout Orientation="Horizontal" HeightRequest="50" Margin="0,20,0,0">
+                        <Image Source="reel.png" HeightRequest="40"/>
+                        <Label Text="Role" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                     </StackLayout>
+                    <BoxView HeightRequest="0.2"/>
+                    
+                    <!-- UltimaRola adaugata layout-->
+                    <StackLayout HeightRequest="60">
+                        <Border HeightRequest="22" WidthRequest="140" Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,20,20">
+                            <Label Text="Ultima rola adaugata" FontSize="13" HorizontalOptions="Center"/>
+                        </Border>
+                        <StackLayout Margin="10,0,0,0">
+                            <Label Text="{Binding NumeUltimaRola,StringFormat='Nume: {0}'}" FontSize="12"/>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{Binding CantitateUltima,StringFormat='Cantitate: {0}'}" FontSize="12"/>
+                                <Label Text="{Binding PePCBUltima,StringFormat='/PCB: {0}'}" FontSize="12" Margin="15,0,0,0"/>
+                                <ImageButton Command="{Binding StergeUltimaRola}" Source="pcb.png" HeightRequest="40" WidthRequest="30" HorizontalOptions="EndAndExpand" Margin="0,-20,15,0"/>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                    </StackLayout>
+                    <BoxView HeightRequest="0.2"/>
+
+                    <!-- Layout data entry rola-->
+                    <Border HeightRequest="150" Margin="0,10,0,0" StrokeShape="RoundRectangle 10,10,10,10">
+
+
+                        <StackLayout Orientation="Vertical" HeightRequest="134" WidthRequest="230" Margin="10,10,0,0">
+
+                            <!-- Layout nume rola-->
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="tag.png" HeightRequest="23" />
+                                <Entry Text="{Binding NumeRola}" Placeholder="Nume rola" HeightRequest="36" WidthRequest="130" Margin="10,0,0,0"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="0.4" WidthRequest="160"/>
+
+                            <!-- Layout cantitate rola-->
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="scale.png" HeightRequest="23" />
+                                <Entry Text="{Binding CantitateRola}" Placeholder="Cantitate" HeightRequest="36" WidthRequest="130" Margin="10,0,0,0" Keyboard="Telephone"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="0.4" WidthRequest="160"/>
+
+                            <!-- Layout /pcb rola-->
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Image Source="abacus.png" HeightRequest="23" />
+                                <StackLayout>
+                                    <Label Text="/PCB" Margin="10,0,0,0"/>
+                                    <Border HeightRequest="26" StrokeShape="RoundRectangle 20,20,20,20" Margin="10,0,0,0">
+                                        <Label Text="{Binding CantitatePePanel}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                </StackLayout>
+
+                                <Stepper Value="{Binding CantitatePePanel}" WidthRequest="80" HeightRequest="40" />
+
+                                <!--Buton de validare rola-->
+                                <ImageButton Command="{Binding AdaugaRola}" Source="plus.png" HorizontalOptions="EndAndExpand" Margin="0,0,20,0" WidthRequest="40" HeightRequest="40"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Border>
+                 </StackLayout>
+
             </StackLayout>
             
         </Border>
          
         <!-- Butonul de adauga-->
-        <Button Grid.Row="3" Margin="0,-50,0,0" WidthRequest="120" HeightRequest="40" Text="Adauga" CornerRadius="30" />
+        <Button Command="{Binding Salveaza}" Grid.Row="3" Margin="0,-50,0,0" WidthRequest="120" HeightRequest="40" Text="Salveaza" CornerRadius="30" />
 
     </Grid>
 </ContentPage>
