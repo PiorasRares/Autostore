@@ -9,7 +9,7 @@ namespace Materiale.DataSource
         public Database(string path)
         {
             database = new SQLiteAsyncConnection(path);
-            database.CreateTablesAsync<Linie, Produs, Rola>();
+            database.CreateTablesAsync<Linie, Produs, Rola,ProdusInPlan>();
         }
         //CRUD Linie
         public Task<List<Linie>> GetLinii()
@@ -54,6 +54,19 @@ namespace Materiale.DataSource
         public Task<int> DeleteRola(Rola rola)
         {
             return database.DeleteAsync(rola);
+        }
+        //CRUD ProdusInPlan
+        public Task<List<ProdusInPlan>> ProduseInPlan(int id)
+        {
+            return database.Table<ProdusInPlan>().Where(i=>i.LinieId== id).ToListAsync();
+        }
+        public Task<int> AddProdusInPlan(ProdusInPlan produsInPlan)
+        {
+            return database.InsertAsync(produsInPlan);
+        }
+        public Task<List<ProdusInPlan>> InCurs()
+        {
+            return database.Table<ProdusInPlan>().Where(i=>i.Start>)
         }
     }
 }

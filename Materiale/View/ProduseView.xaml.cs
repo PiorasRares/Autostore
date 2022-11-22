@@ -6,4 +6,9 @@ public partial class ProduseView : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
+    {
+
+    }
 }

@@ -12,6 +12,9 @@ namespace Materiale.Model
         public string NumeTop { get; set; }
         public string PartPCB { get; set; }
         public int PCBPePanel { get; set; }
+        public int CantitateInPlan { get; set; }
+        public TimeSpan OraStart { get;set; }
+        public TimeSpan OraEnd { get;set;}
 
     }
 }

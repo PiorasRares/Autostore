@@ -22,10 +22,10 @@
 
         <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="-2,-2,-2,10" StrokeShape="RoundRectangle 0,0,30,30"></Border>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="20,-20,20,40" StrokeShape="RoundRectangle 0,0,30,30" >
-            <CollectionView ItemsSource="{Binding Linii}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView ItemsSource="{Binding Linii}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged" Margin="0,16,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border HeightRequest="45" Margin="5,6,5,5" StrokeShape="RoundRectangle 15,15,15,15">
+                        <Border HeightRequest="48" Margin="5,5,5,5" StrokeShape="RoundRectangle 15,15,15,15">
                             <Label Text="{Binding NumeLinie}" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="26"/>
                         </Border>
                     </DataTemplate>
