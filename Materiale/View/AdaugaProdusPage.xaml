@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
 
 
-    <Grid>
+    <Grid BackgroundColor="LightSkyBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="230"/>
             <RowDefinition Height="410"/>
@@ -27,7 +27,7 @@
         </Border>
         
         <!--Borderul cu data entry-->
-        <Border Grid.Row="1" Margin="30,-130,30,0" StrokeShape="RoundRectangle 30,30,30,30" >
+        <Border Grid.Row="1" Margin="30,-130,30,0" StrokeShape="RoundRectangle 30,30,30,30" BackgroundColor="Beige">
             
             <StackLayout Margin="30,20,20,0">
                

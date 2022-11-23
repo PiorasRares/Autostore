@@ -64,9 +64,9 @@ namespace Materiale.DataSource
         {
             return database.InsertAsync(produsInPlan);
         }
-        public Task<List<ProdusInPlan>> InCurs()
+        public Task<List<ProdusInPlan>> ProduseInCurs(TimeSpan now)
         {
-            return database.Table<ProdusInPlan>().Where(i=>i.Start>)
+            return database.Table<ProdusInPlan>().Where(i => i.End > now).ToListAsync();
         }
     }
 }

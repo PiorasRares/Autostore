@@ -12,20 +12,20 @@ namespace Materiale.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         public List<Linie> Linii { get; set; }
         public List<ProdusInPlan> PlanInCurs { get; set; }
+        TimeOnly now = TimeOnly.FromDateTime(DateTime.Now);
         public ICommand AddLinie { get; private set; }
         public ICommand AddProdus { get; private set; }
         public ICommand AdaugainPlan { get;private set; }
         public MainPageViewModel()
         {
             Linii = App.database.GetLinii().Result;
-            PlanInCurs =
+            PlanInCurs = App.database.ProduseInCurs(now.ToTimeSpan()).Result;
             AddLinie = new Command(
                     async execute=>
                     {
-                        var rez = await Shell.Current.DisplayPromptAsync("Adauga o linie noua", "Numele liniei");
+                        string rez = await Shell.Current.DisplayPromptAsync("Adauga o linie noua", "Numele liniei");
                         if (rez != null&& rez != "")
                         {
                             Linie linie = new Linie { NumeLinie = rez };

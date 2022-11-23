@@ -10,17 +10,17 @@
         <viewModel:ProduseViewViewModel/>
     </ContentPage.BindingContext>
 
-    <Grid>
+    <Grid BackgroundColor="Beige">
         <Grid.RowDefinitions>
             <RowDefinition Height="330"/>
             <RowDefinition Height="330"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" HeightRequest="180" VerticalOptions="Start" BackgroundColor="SkyBlue" Margin="-2,-2,-2,0" StrokeShape="RoundRectangle 0,0,40,40" />
+        <Border Grid.Row="0" HeightRequest="180" VerticalOptions="Start" BackgroundColor="Teal" Margin="-2,-2,-2,0" StrokeShape="RoundRectangle 0,0,40,40" />
         
         <!-- Planul pentru linie pe ziua selectata-->
-        <Border Grid.Row="0" WidthRequest="300" Margin="0,20,0,0" StrokeShape="RoundRectangle 20,20,20,20">
+        <Border Grid.Row="0" WidthRequest="300" Margin="0,20,0,0" StrokeShape="RoundRectangle 20,20,20,20" BackgroundColor="LightSkyBlue">
             <CollectionView ItemsSource="{Binding Plan}" EmptyView="No Plan" Margin="10,30,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -46,8 +46,8 @@
                 <Label Text="End"/>
             </StackLayout>
         </Border>
-        <Border Grid.Row="2" Margin="-2,-2,-2,-2" StrokeShape="RoundRectangle 40,40,0,0" HeightRequest="250" BackgroundColor="LightGoldenrodYellow"/>
-        <Border Grid.Row="1"  Margin="0,0,0,0" StrokeShape="RoundRectangle 20,20,20,20" HeightRequest="300" WidthRequest="300">
+        <Border Grid.Row="2" Margin="-2,-2,-2,-2" StrokeShape="RoundRectangle 40,40,0,0" HeightRequest="250" BackgroundColor="Teal"/>
+        <Border Grid.Row="1"  Margin="0,0,0,0" StrokeShape="RoundRectangle 20,20,20,20" HeightRequest="300" WidthRequest="300" BackgroundColor="LightSkyBlue">
             <CollectionView ItemsSource="{Binding Produse}" WidthRequest="280" Margin="0,10,0,0" SelectionMode="Single" SelectedItem="{Binding ProdusSelectat}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

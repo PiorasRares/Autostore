@@ -1,5 +1,4 @@
-﻿using Java.Security;
-using Materiale.Model;
+﻿using Materiale.Model;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -24,6 +23,7 @@ namespace Materiale.ViewModel
                 if (produsSelectat != value)
                 {
                     produsSelectat = value;
+                    OnPropertyChanged(nameof(ProdusSelectat));
                 }
             }
                 
